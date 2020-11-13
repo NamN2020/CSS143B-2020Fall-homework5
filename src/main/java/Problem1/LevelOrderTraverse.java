@@ -26,33 +26,29 @@ public class LevelOrderTraverse {
         }
 
         while (!discoveredNodes.isEmpty()) {
+            int length = discoveredNodes.size();
             List<Integer> tempList = new ArrayList<>();
-            root = discoveredNodes.poll();
-            if (count < 2) {
+
+            for (int i = 0; i < length; i++) {
+                root = discoveredNodes.poll();
                 tempList.add(root.val);
-            } else {
-                for(int i = 1; i < count; i ++){
-                    tempList.add(root.val);
-                    if(discoveredNodes.peek() != null){
-                        root = discoveredNodes.poll();
-                    }
-                }
-                count = 1;
+
+                // enqueue child nodes
+                getChildNodes(discoveredNodes, root);
             }
+
             result.add(tempList);
-
-            // enqueue the child nodes
-            if (root.left != null) {
-                discoveredNodes.add(root.left);
-                count++;
-            }
-
-            if (root.right != null) {
-                discoveredNodes.add(root.right);
-                count++;
-            }
-
         }
         return result;
+    }
+
+    public static void getChildNodes(Queue discoveredNodes, TreeNode root) {
+        if (root.left != null) {
+            discoveredNodes.add(root.left);
+        }
+
+        if (root.right != null) {
+            discoveredNodes.add(root.right);
+        }
     }
 }
