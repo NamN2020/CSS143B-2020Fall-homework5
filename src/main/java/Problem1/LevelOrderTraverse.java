@@ -5,6 +5,7 @@ package Problem1;
     CSS 143B
     Homework 5
  */
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -15,29 +16,43 @@ public class LevelOrderTraverse {
         // homework
         List<List<Integer>> result = new ArrayList<>();
         Queue<TreeNode> discoveredNodes = new LinkedList<TreeNode>();
+        int count = 0;
 
-        if(root == null){
+        if (root == null) {
             return result;
         } else {
-           discoveredNodes.add(root);
+            count++;
+            discoveredNodes.add(root);
         }
 
-        while(!discoveredNodes.isEmpty()){
-            List<Integer> temp = new ArrayList<>();
-            temp.add((int) discoveredNodes.poll().val);
-            result.add(temp);
+        while (!discoveredNodes.isEmpty()) {
+            List<Integer> tempList = new ArrayList<>();
+            root = discoveredNodes.poll();
+            if (count < 2) {
+                tempList.add(root.val);
+            } else {
+                for(int i = 1; i < count; i ++){
+                    tempList.add(root.val);
+                    if(discoveredNodes.peek() != null){
+                        root = discoveredNodes.poll();
+                    }
+                }
+                count = 1;
+            }
+            result.add(tempList);
 
-            if(root.left != null){
+            // enqueue the child nodes
+            if (root.left != null) {
                 discoveredNodes.add(root.left);
+                count++;
             }
 
-            if(root.right != null){
+            if (root.right != null) {
                 discoveredNodes.add(root.right);
+                count++;
             }
 
         }
-
-
         return result;
     }
 }
