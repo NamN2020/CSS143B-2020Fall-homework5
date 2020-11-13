@@ -16,18 +16,16 @@ public class LevelOrderTraverse {
         // homework
         List<List<Integer>> result = new ArrayList<>();
         Queue<TreeNode> discoveredNodes = new LinkedList<TreeNode>();
-        int count = 0;
 
         if (root == null) {
             return result;
         } else {
-            count++;
             discoveredNodes.add(root);
         }
 
         while (!discoveredNodes.isEmpty()) {
-            int length = discoveredNodes.size();
             List<Integer> tempList = new ArrayList<>();
+            int length = discoveredNodes.size();
 
             for (int i = 0; i < length; i++) {
                 root = discoveredNodes.poll();
