@@ -36,6 +36,8 @@ public class Problem3Test {
     public void testInOrderTraverse() {
         // homework
         // to verify inOrderTraverse(TreeNode<Integer> node)
+
+
     }
 
     private static List<Integer> inOrderTraverse(TreeNode<Integer> node) {
@@ -146,9 +148,13 @@ public class Problem3Test {
         //    N   N
         // homework
         // what problem can you see for insertInBst from this test case?
-        // answer:
+        // answer: The root of a Binary Search Tree is suppose to be the middle value, but with these insertions
+        //         the root becomes the smallest number and the tree is no long a Binary Search Tree. As for the
+        //         search time it would become linear with these insertion.
         // discuss how you would solve it in a comment below
-        // answer:
+        // answer: You could put the whole Binary Search Tree into an Array and find the middle of that array.
+        //         If the middle of the Array is larger than the root than remake the Binary Search Tree with
+        //         the middle of the Array as the root and the insert the rest of the values.
         root = new TreeNode<>(1);
         testCases.add(new BSTTestCase<>(root, 2, Arrays.asList(1, 2)));
         testCases.add(new BSTTestCase<>(root, 3, Arrays.asList(1, 2, 3)));
