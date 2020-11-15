@@ -4,6 +4,8 @@ package Problem1;
     November 15, 2020
     CSS 143B
     Homework 5
+
+    Interface: I choose LinkedList because that's the one I'm most familiar with.
  */
 
 import java.util.ArrayList;
