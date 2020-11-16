@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -36,8 +37,19 @@ public class Problem3Test {
     public void testInOrderTraverse() {
         // homework
         // to verify inOrderTraverse(TreeNode<Integer> node)
+        TreeNode<Integer> root = new TreeNode<>(4);
+        root.right = new TreeNode<>(5);
+        root.left = new TreeNode<>(3);
+        root.left.right = new TreeNode<>(7);
 
+        List<Integer> actual = inOrderTraverse(root);
+        List<Integer> expected = new LinkedList<>();
+        expected.add(3);
+        expected.add(7);
+        expected.add(4);
+        expected.add(5);
 
+        assertEquals(expected, actual);
     }
 
     private static List<Integer> inOrderTraverse(TreeNode<Integer> node) {
